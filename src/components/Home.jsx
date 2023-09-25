@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 
-const Element = () => {
+const Home = () => {
+  const { title } = useLoaderData();
   return (
     <div className='element'>
       <h1>Blog Home</h1>
+      {{ title } && <p>{title}</p>}
     </div>
   );
 };
 
-export default Element;
+export default Home;

@@ -3,6 +3,7 @@ import App from './App';
 import ErrorPage from './components/ErrorPage';
 
 import Home from './components/Home';
+import homeLoader from './loaders/homeLoader';
 import Posts from './components/Posts';
 import Post from './components/Post';
 
@@ -16,6 +17,7 @@ const Router = () => {
         {
           path: '/',
           element: <Home />,
+          loader: homeLoader,
         },
         {
           path: '/posts',
