@@ -1,5 +1,10 @@
+import { useLoaderData } from 'react-router-dom';
+
 function Post() {
-  return <div className='element'>Individual Post</div>;
+  const post = useLoaderData();
+  console.log(post);
+
+  return <div className='element'>{post?.title}</div>;
 }
 
 export default Post;
