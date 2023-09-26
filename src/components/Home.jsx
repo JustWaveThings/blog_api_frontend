@@ -2,7 +2,6 @@ import { useLoaderData, Link } from 'react-router-dom';
 
 const Home = () => {
   const { posts } = useLoaderData();
-  console.log(posts);
 
   return (
     <div className='element'>
@@ -12,10 +11,11 @@ const Home = () => {
           {posts.map(post => (
             <li key={post._id}>
               <Link to={`/posts/${post._id}`}>{post.title}</Link>
-              <p>{post.subtitle}</p>
-              <p>{post.created_timestamp}</p>
-              <p>{post.comment_count}</p>
-              <p>{post.post_age_created}</p>
+              <p>Subtitle: {post.subtitle}</p>
+              <p>Date Created: {post.created_timestamp_formatted}</p>
+              <p>Comment count: {post.comment_count}</p>
+              <p>Post age: {post.post_age_created} Days</p>
+              <p>Likes: {post.likes}</p>
             </li>
           ))}
         </ul>
