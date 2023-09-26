@@ -8,8 +8,11 @@ function Post() {
     <div className='element'>
       <p>Title: {post.title}</p>
       <p>Subheading: {post.subtitle}</p>
-      <p>Created: {post.created_timestamp_formatted}</p>
-      <p>{post.post_age_created} days old</p>
+      <p>
+        Created: {post.created_timestamp_formatted} ({post.post_age_created}{' '}
+        days old)
+      </p>
+      <p></p>
       <p>
         {post.likes === 0
           ? 'Be the first person to like this post.'
