@@ -4,8 +4,8 @@ import ErrorPage from './components/ErrorPage';
 
 import Home from './components/Home';
 import homeLoader from './loaders/homeLoader';
-import Posts from './components/Posts';
 import Post from './components/Post';
+import postLoader from './loaders/postLoader';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -20,12 +20,9 @@ const Router = () => {
           loader: homeLoader,
         },
         {
-          path: '/posts',
-          element: <Posts />,
-        },
-        {
           path: '/posts/:id',
           element: <Post />,
+          loader: postLoader,
         },
       ],
     },
