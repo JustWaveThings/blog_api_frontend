@@ -1,7 +1,8 @@
 import { useLoaderData, Link } from 'react-router-dom';
 
 const Home = () => {
-  const posts = useLoaderData();
+  const { posts } = useLoaderData();
+  console.log(posts);
 
   return (
     <div className='element'>
