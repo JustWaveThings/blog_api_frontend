@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, Link } from 'react-router-dom';
 
 function Post() {
   const post = useLoaderData();
@@ -23,21 +23,43 @@ function Post() {
       <br />
       <p>{post.body}</p>
 
-      {/*  <p>Comments: </p>
-      {post.comments.map(comment => (
+      <p>All Comments: </p>
+      {post.comment_array.map(comment => (
         <div key={comment._id}>
-          <p>{comment.body}</p>
-          <p>{comment.created_timestamp_formatted}</p>
-          <p>{comment.comment_age_created} days old</p>
+          <p>Commenter: {comment.name}</p>
+          <p>
+            Posted: {comment?.published_timestamp_formatted} (
+            {comment?.comment_age_published} days ago)
+          </p>
+          <p>Comment: {comment.body}</p>
           <p>
             {comment.likes === 0
-              ? 'Be the first person to like this comment.'
+              ? '0 likes'
               : comment.likes === 1
               ? `1 like`
               : `${comment.likes} likes`}
+            <button>Like</button>
+            <button>Report</button>
           </p>
         </div>
-      ))} */}
+      ))}
+
+      <p>Add a Comment: </p>
+      <form
+        method='POST'
+        action={`http://localhost:3000/posts/${post._id}/comment `}>
+        <label htmlFor='name'>Name: </label>
+        <input type='text' id='name' name='name' />
+        <label htmlFor='body'>Comment: </label>
+        <textarea id='body' name='body' />
+        <input type='hidden' name='parent_post' value={post._id} />
+        <button>Submit</button>
+      </form>
+      <nav>
+        <Link to='/'>
+          <button>Back to Posts</button>
+        </Link>
+      </nav>
     </div>
   );
 }
