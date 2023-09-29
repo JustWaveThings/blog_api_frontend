@@ -62,3 +62,8 @@
 .comment {
   margin: .25rem;
 }
+
+.textarea {
+  white-space: pre-wrap;
+}
+
