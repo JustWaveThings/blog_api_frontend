@@ -22,7 +22,8 @@ function CommentForm({ id }) {
         />
         <p>{errors.name?.message} </p>
 
-        <input
+        <textarea
+          rows={10}
           defaultValue=''
           {...register('body', {
             required: 'Required',
