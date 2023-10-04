@@ -1,6 +1,7 @@
 import { useLoaderData, Link } from 'react-router-dom';
 import CommentForm from './CommentForm';
 import validator from 'validator';
+import PostContent from './PostContent';
 
 function Post() {
   const post = useLoaderData();
@@ -22,7 +23,7 @@ function Post() {
           : `${post.likes} likes`}
       </p>
       <br />
-      <p>{post.body}</p>
+      <PostContent />
       <br />
       <p>All Comments: </p>
       <br />
@@ -34,7 +35,7 @@ function Post() {
             {comment?.comment_age_published} days ago)
           </p>
           <p className='textarea'>
-            Comment: {validator.unescape(comment.body)}
+            Comment: {validator.unescape(<PostContent />)}
           </p>
           <p>
             {comment.likes === 0
