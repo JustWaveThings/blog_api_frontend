@@ -1,5 +1,5 @@
 function Header() {
-  return <div className='header'>This is the Blog Header</div>;
+  return <div className='header'>This is the Blog Frontend</div>;
 }
 
 export default Header;
