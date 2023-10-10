@@ -8,8 +8,8 @@ function Post() {
 
   return (
     <div className='element'>
-      <p>Title: {post.title}</p>
-      <p>Subheading: {post.subtitle}</p>
+      <p>Title: {validator.unescape(post.title)}</p>
+      <p>Subheading: {validator.unescape(post.subtitle)}</p>
       <p>
         Created: {post.created_timestamp_formatted} ({post.post_age_created}{' '}
         days old)
