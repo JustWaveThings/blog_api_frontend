@@ -35,7 +35,7 @@ function Post() {
             {comment?.comment_age_published} days ago)
           </p>
           <p className='textarea'>
-            Comment: {validator.unescape(<PostContent />)}
+            Comment: {validator.unescape(comment.body)}
           </p>
           <p>
             {comment.likes === 0
