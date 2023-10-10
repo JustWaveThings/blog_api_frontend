@@ -1,4 +1,5 @@
 import { useLoaderData, Link } from 'react-router-dom';
+import { dateTimeDisplay } from '../utils/dateTimeDisplay';
 
 const Home = () => {
   const { posts } = useLoaderData();
@@ -12,9 +13,12 @@ const Home = () => {
             <li key={post._id}>
               <Link to={`/posts/${post._id}`}>{post.title}</Link>
               <p>Subhead: {post.subtitle}</p>
-              <p>Created: {post.created_timestamp_formatted}</p>
+              <p>
+                Created: {dateTimeDisplay(post.created_timestamp)}
+                {` - `}
+                {post.created_timestamp_formatted}
+              </p>
               <p>Comments: {post.comment_count}</p>
-              <p>Age: {post.post_age_created} Days</p>
               <p>Likes: {post.likes}</p>
             </li>
           ))}
