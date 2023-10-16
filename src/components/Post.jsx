@@ -11,11 +11,7 @@ function Post() {
     <div className='element'>
       <p>Title: {validator.unescape(post.title)}</p>
       <p>Subheading: {validator.unescape(post.subtitle)}</p>
-      <p>
-        Created: {dateTimeDisplay(post.created_timestamp)}
-        {` - `}
-        {post.created_timestamp_formatted}
-      </p>
+      <p>Created: {dateTimeDisplay(post.created_timestamp)}</p>
 
       <br />
       <PostContent />
@@ -25,11 +21,7 @@ function Post() {
       {post.comment_array.map(comment => (
         <div className='comment' key={comment._id}>
           <p>Name: {comment.name}</p>
-          <p>
-            Posted: {dateTimeDisplay(comment.published_timestamp)}
-            {` - `}
-            {comment?.published_timestamp_formatted}
-          </p>
+          <p>Posted: {dateTimeDisplay(comment.published_timestamp)}</p>
           <p className='textarea'>
             Comment: {validator.unescape(comment.body)}
           </p>
