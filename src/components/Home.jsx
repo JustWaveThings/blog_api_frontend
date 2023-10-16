@@ -13,11 +13,7 @@ const Home = () => {
             <li key={post._id}>
               <Link to={`/posts/${post._id}`}>{post.title}</Link>
               <p>Subhead: {post.subtitle}</p>
-              <p>
-                Created: {dateTimeDisplay(post.created_timestamp)}
-                {` - `}
-                {post.created_timestamp_formatted}
-              </p>
+              <p>Published: {dateTimeDisplay(post.created_timestamp)}</p>
               <p>Comments: {post.comment_count}</p>
             </li>
           ))}
