@@ -19,7 +19,6 @@ const Home = () => {
                 {post.created_timestamp_formatted}
               </p>
               <p>Comments: {post.comment_count}</p>
-              <p>Likes: {post.likes}</p>
             </li>
           ))}
         </ul>
