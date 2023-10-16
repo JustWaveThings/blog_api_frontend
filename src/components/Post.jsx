@@ -16,13 +16,7 @@ function Post() {
         {` - `}
         {post.created_timestamp_formatted}
       </p>
-      <p>
-        {post.likes === 0
-          ? 'Be the first person to like this post.'
-          : post.likes === 1
-          ? `1 like`
-          : `${post.likes} likes`}
-      </p>
+
       <br />
       <PostContent />
       <br />
@@ -38,15 +32,6 @@ function Post() {
           </p>
           <p className='textarea'>
             Comment: {validator.unescape(comment.body)}
-          </p>
-          <p>
-            {comment.likes === 0
-              ? '0 likes'
-              : comment.likes === 1
-              ? `1 like`
-              : `${comment.likes} likes`}
-            <button>Like</button>
-            <button>Report</button>
           </p>
         </div>
       ))}
