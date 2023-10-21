@@ -17,7 +17,11 @@ const Home = () => {
               <h4>{validator.unescape(posts[0].subtitle)}</h4>
               <p>{dateTimeDisplay(posts[0].created_timestamp)}</p>
             </div>
-            <PostContent post={posts[0].body} />
+            <PostContent
+              post={posts[0].body}
+              truncateAtChar={200}
+              id={posts[0]._id}
+            />
           </>
         )}
       </section>
