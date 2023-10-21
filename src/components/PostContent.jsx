@@ -1,9 +1,7 @@
-import { useLoaderData } from 'react-router-dom';
 import validator from 'validator';
 
-function PostContent() {
-  const post = useLoaderData();
-  const markup = { __html: validator.unescape(post.body) };
+function PostContent({ post }) {
+  const markup = { __html: validator.unescape(post) };
   return <div className='textarea' dangerouslySetInnerHTML={markup} />;
 }
 
