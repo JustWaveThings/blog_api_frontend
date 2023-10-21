@@ -1,20 +1,43 @@
 import { useLoaderData, Link } from 'react-router-dom';
 import { dateTimeDisplay } from '../utils/dateTimeDisplay';
+import validator from 'validator';
+import PostContent from './PostContent';
 
 const Home = () => {
-  const { posts } = useLoaderData();
+  const posts = useLoaderData();
+  const recentPosts = posts.slice(1, 5);
 
   return (
     <div className='element'>
-      <h1>Blog Home</h1>
-      {posts && (
+      <section className='latest'>
+        {posts && (
+          <>
+            <h1>{validator.unescape(posts[0].title)}</h1>
+            <div>
+              <h4>{validator.unescape(posts[0].subtitle)}</h4>
+              <p>{dateTimeDisplay(posts[0].created_timestamp)}</p>
+            </div>
+            <PostContent
+              post={posts[0].body}
+              truncateAtChar={200}
+              id={posts[0]._id}
+            />
+          </>
+        )}
+      </section>
+      <section className='recent'></section>
+      {recentPosts && (
         <ul>
-          {posts.map(post => (
+          {recentPosts.map(post => (
             <li key={post._id}>
-              <Link to={`/posts/${post._id}`}>{post.title}</Link>
-              <p>Subhead: {post.subtitle}</p>
-              <p>Published: {dateTimeDisplay(post.created_timestamp)}</p>
-              <p>Comments: {post.comment_count}</p>
+              <Link to={`/posts/${post._id}`}>
+                {validator.unescape(post.title)}
+              </Link>
+              <div>
+                <p>{validator.unescape(post.subtitle)}</p>
+                <p>Published: {dateTimeDisplay(post.created_timestamp)}</p>
+                <p>Comments: {post.comment_count}</p>
+              </div>
             </li>
           ))}
         </ul>
