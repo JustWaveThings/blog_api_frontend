@@ -5,7 +5,7 @@ import PostContent from './PostContent';
 
 const Home = () => {
   const posts = useLoaderData();
-  const recentPosts = posts.slice(1, 5);
+  const recentPosts = posts.slice(1, 7);
 
   return (
     <div className='element'>
@@ -16,6 +16,11 @@ const Home = () => {
             <div>
               <h4>{validator.unescape(posts[0].subtitle)}</h4>
               <p>{dateTimeDisplay(posts[0].created_timestamp)}</p>
+              <p>
+                {posts[0].comment_count !== 0
+                  ? `Comments: ${posts[0].comment_count}`
+                  : `No comments yet`}
+              </p>
             </div>
             <PostContent
               post={posts[0].body}
@@ -26,6 +31,9 @@ const Home = () => {
         )}
       </section>
       <section className='recent'></section>
+      <header>
+        <h1>Recent posts</h1>
+      </header>
       {recentPosts && (
         <ul>
           {recentPosts.map(post => (
@@ -35,8 +43,17 @@ const Home = () => {
               </Link>
               <div>
                 <p>{validator.unescape(post.subtitle)}</p>
+                <PostContent
+                  post={post.body}
+                  truncateAtChar={100}
+                  id={post._id}
+                />
                 <p>Published: {dateTimeDisplay(post.created_timestamp)}</p>
-                <p>Comments: {post.comment_count}</p>
+                <p>
+                  {post.comment_count !== 0
+                    ? `Comments: ${post.comment_count}`
+                    : `No comments yet`}
+                </p>
               </div>
             </li>
           ))}
