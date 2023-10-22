@@ -15,8 +15,12 @@ function Post() {
 
       <br />
       <PostContent post={post.body} />
-      <br />
-      <p>All Comments: </p>
+
+      {post.comment_array.length > 0 && (
+        <>
+          <br /> <p>All Comments:</p>
+        </>
+      )}
       <br />
       {post.comment_array.map(comment => (
         <div className='comment' key={comment._id}>
