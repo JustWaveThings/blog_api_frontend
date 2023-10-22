@@ -1,6 +1,7 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode } from 'react-icons/fa';
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <div className='footer'>
       <a
@@ -24,6 +25,7 @@ function Footer() {
         rel='noreferrer'>
         <FaCode />
       </a>
+      <p>© {currentYear} Fred Love</p>
     </div>
   );
 }
