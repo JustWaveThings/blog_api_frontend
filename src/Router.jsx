@@ -1,11 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import ErrorPage from './components/ErrorPage';
-
 import Home from './components/Home';
 import homeLoader from './loaders/homeLoader';
 import Post from './components/Post';
 import postLoader from './loaders/postLoader';
+import Posts from './components/Posts';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -17,6 +17,11 @@ const Router = () => {
         {
           index: true,
           element: <Home />,
+          loader: homeLoader,
+        },
+        {
+          path: '/posts',
+          element: <Posts />,
           loader: homeLoader,
         },
         {
