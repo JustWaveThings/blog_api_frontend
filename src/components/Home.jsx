@@ -1,5 +1,6 @@
 import { useLoaderData, Link } from 'react-router-dom';
 import { dateTimeDisplay } from '../utils/dateTimeDisplay';
+import { commentCountDisplay } from '../utils/commentCountDisplay';
 import validator from 'validator';
 import PostContent from './PostContent';
 
@@ -16,11 +17,7 @@ const Home = () => {
             <div>
               <h4>{validator.unescape(posts[0].subtitle)}</h4>
               <p>{dateTimeDisplay(posts[0].created_timestamp)}</p>
-              <p>
-                {posts[0].comment_count !== 0
-                  ? `Comments: ${posts[0].comment_count}`
-                  : `No comments yet`}
-              </p>
+              <p>{commentCountDisplay(posts[0].comment_count)}</p>
             </div>
             <PostContent
               post={posts[0].body}
@@ -49,11 +46,7 @@ const Home = () => {
                   id={post._id}
                 />
                 <p>Published: {dateTimeDisplay(post.created_timestamp)}</p>
-                <p>
-                  {post.comment_count !== 0
-                    ? `Comments: ${post.comment_count}`
-                    : `No comments yet`}
-                </p>
+                <p>{commentCountDisplay(post.comment_count)}</p>
               </div>
             </li>
           ))}
